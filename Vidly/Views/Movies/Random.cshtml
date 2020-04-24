@@ -1,7 +1,8 @@
 ﻿@*@using Vidly.Models*@
 @*@model Vidly.Models.Movie*@
-@model Vidly.ViewModels.RandomMovieViewModel
+@*@model Vidly.ViewModels.RandomMovieViewModel*@
 
+@model IEnumerable<Vidly.Models.Movie>
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,7 +19,7 @@
     This is Multiline Commnet
 *@
 
-@{
+@*@{
     var ClassName = Model.Customers.Count > 5 ? "poplar" : null;
 
 }
@@ -37,5 +38,14 @@ else
         {
             <li>@Customer.Name </li>
         }
+    </ul>
+}*@
+
+@foreach (var movie in Model)
+{
+    <ul>
+        <li>
+            @movie.Name
+        </li>
     </ul>
 }
