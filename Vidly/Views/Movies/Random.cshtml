@@ -14,5 +14,28 @@
 
 @*@ViewBag.Movie*@
 
+@*
+    This is Multiline Commnet
+*@
 
-<h2>@Model.Movie.Name</h2>
+@{
+    var ClassName = Model.Customers.Count > 5 ? "poplar" : null;
+
+}
+
+<h2 class=@ClassName>@Model.Movie.Name</h2>
+
+
+@if (Model.Customers.Count == 0)
+{
+    <text>No one has rented this movie before.</text>
+}
+else
+{
+    <ul>
+        @foreach (var Customer in Model.Customers)
+        {
+            <li>@Customer.Name </li>
+        }
+    </ul>
+}
