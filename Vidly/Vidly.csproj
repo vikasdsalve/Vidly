@@ -179,11 +179,20 @@
     <Compile Include="Migrations\202004250525168_InitialModel.Designer.cs">
       <DependentUpon>202004250525168_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004250536189_AddIsSubscribedtoToCustmoer.cs" />
+    <Compile Include="Migrations\202004250536189_AddIsSubscribedtoToCustmoer.Designer.cs">
+      <DependentUpon>202004250536189_AddIsSubscribedtoToCustmoer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004250541596_AddMembershipType.cs" />
+    <Compile Include="Migrations\202004250541596_AddMembershipType.Designer.cs">
+      <DependentUpon>202004250541596_AddMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -270,6 +279,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004250525168_InitialModel.resx">
       <DependentUpon>202004250525168_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004250536189_AddIsSubscribedtoToCustmoer.resx">
+      <DependentUpon>202004250536189_AddIsSubscribedtoToCustmoer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004250541596_AddMembershipType.resx">
+      <DependentUpon>202004250541596_AddMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
