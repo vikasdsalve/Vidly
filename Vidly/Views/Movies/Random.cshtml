@@ -50,6 +50,10 @@
         </ul>
     }*@
 
+<p>
+    @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
+</p>
+
 
 @if (!Model.Any())
 {
@@ -69,7 +73,7 @@ else
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(Movie.Name, "Details", "Movies", new { id = Movie.Id }, null)
+                        @Html.ActionLink(Movie.Name, "Edit", "Movies", new { id = Movie.Id }, null)
                     </td>
                     <td>@Movie.Genre.Name</td>
                 </tr>

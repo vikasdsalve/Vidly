@@ -7,6 +7,7 @@ using Vidly.Models;
 using Vidly.ViewModels;
 using System.Data.Entity;
 
+
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
@@ -22,6 +23,38 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
+
+        public ActionResult New()
+        {
+            var genre = _context.Genre.ToList();
+            var viewModel = new MovieFormViewModel
+            {
+                Genre = genre
+            };
+            return View("MovieForm", viewModel);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Save(Movie Movie)
+        {
+
+            if (Movie.Id == 0)
+                _context.Movies.Add(Movie);
+            else
+            {
+                var MoiveInDb = _context.Movies.Single(c => c.Id == Movie.Id);
+
+                MoiveInDb.Name = Movie.Name;
+                MoiveInDb.ReleaseDate = Movie.ReleaseDate;
+                MoiveInDb.GenreId = Movie.GenreId;
+                MoiveInDb.NumberInStock = Movie.NumberInStock;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Random", "Movies");
+        }
+
         // GET: Movies
         public ActionResult Random()
         {
@@ -57,7 +90,19 @@ namespace Vidly.Controllers
 
         public ActionResult Edit(int id)
         {
-            return Content("id=" + id);
+            var Movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            if (Movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = Movie,
+                Genre = _context.Genre.ToList()
+            };
+            return View("MovieForm", viewModel);
+            //return Content("id=" + id);
         }
 
 
