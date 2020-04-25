@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
 using System.Data.Entity;
-
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers
 {
@@ -39,17 +39,24 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Movie Movie)
         {
-
-            if (Movie.Id == 0)
-                _context.Movies.Add(Movie);
-            else
+            try
             {
-                var MoiveInDb = _context.Movies.Single(c => c.Id == Movie.Id);
+                if (Movie.Id == 0)
+                    _context.Movies.Add(Movie);
+                else
+                {
+                    var MoiveInDb = _context.Movies.Single(c => c.Id == Movie.Id);
 
-                MoiveInDb.Name = Movie.Name;
-                MoiveInDb.ReleaseDate = Movie.ReleaseDate;
-                MoiveInDb.GenreId = Movie.GenreId;
-                MoiveInDb.NumberInStock = Movie.NumberInStock;
+                    MoiveInDb.Name = Movie.Name;
+                    MoiveInDb.ReleaseDate = Movie.ReleaseDate;
+                    MoiveInDb.GenreId = Movie.GenreId;
+                    MoiveInDb.NumberInStock = Movie.NumberInStock;
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+
+                Console.WriteLine(e);
             }
             _context.SaveChanges();
             return RedirectToAction("Random", "Movies");
