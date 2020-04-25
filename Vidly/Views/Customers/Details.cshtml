@@ -4,11 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Model.Name</h2>
 
-@Model.Name
-
-@Model.Id
+@*@Model.Id*@
 
 <br />
 @Html.ActionLink("Back to List","Index")
