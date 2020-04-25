@@ -203,9 +203,26 @@
     <Compile Include="Migrations\202004250728532_AddBirthdateToCustomer.Designer.cs">
       <DependentUpon>202004250728532_AddBirthdateToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004250855528_AddMoiveModel.cs" />
+    <Compile Include="Migrations\202004250855528_AddMoiveModel.Designer.cs">
+      <DependentUpon>202004250855528_AddMoiveModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004250901469_AddNewColumnIntoMoiveModel.cs" />
+    <Compile Include="Migrations\202004250901469_AddNewColumnIntoMoiveModel.Designer.cs">
+      <DependentUpon>202004250901469_AddNewColumnIntoMoiveModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004250916403_AddGenresModelandColumn.cs" />
+    <Compile Include="Migrations\202004250916403_AddGenresModelandColumn.Designer.cs">
+      <DependentUpon>202004250916403_AddGenresModelandColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004250917256_PopulateGenresData.cs" />
+    <Compile Include="Migrations\202004250917256_PopulateGenresData.Designer.cs">
+      <DependentUpon>202004250917256_PopulateGenresData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -275,6 +292,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +331,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004250728532_AddBirthdateToCustomer.resx">
       <DependentUpon>202004250728532_AddBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004250855528_AddMoiveModel.resx">
+      <DependentUpon>202004250855528_AddMoiveModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004250901469_AddNewColumnIntoMoiveModel.resx">
+      <DependentUpon>202004250901469_AddNewColumnIntoMoiveModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004250916403_AddGenresModelandColumn.resx">
+      <DependentUpon>202004250916403_AddGenresModelandColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004250917256_PopulateGenresData.resx">
+      <DependentUpon>202004250917256_PopulateGenresData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

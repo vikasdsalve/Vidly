@@ -20,32 +20,61 @@
 *@
 
 @*@{
-    var ClassName = Model.Customers.Count > 5 ? "poplar" : null;
+        var ClassName = Model.Customers.Count > 5 ? "poplar" : null;
 
-}
+    }
 
-<h2 class=@ClassName>@Model.Movie.Name</h2>
+    <h2 class=@ClassName>@Model.Movie.Name</h2>
 
 
-@if (Model.Customers.Count == 0)
+    @if (Model.Customers.Count == 0)
+    {
+        <text>No one has rented this movie before.</text>
+    }
+    else
+    {
+        <ul>
+            @foreach (var Customer in Model.Customers)
+            {
+                <li>@Customer.Name </li>
+            }
+        </ul>
+    }*@
+
+@*@foreach (var movie in Model)
+    {
+        <ul>
+            <li>
+                @movie.Name
+            </li>
+        </ul>
+    }*@
+
+
+@if (!Model.Any())
 {
-    <text>No one has rented this movie before.</text>
+    <p>We don't have any Movies yet.</p>
 }
 else
 {
-    <ul>
-        @foreach (var Customer in Model.Customers)
-        {
-            <li>@Customer.Name </li>
-        }
-    </ul>
-}*@
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Movie in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(Movie.Name, "Details", "Movies", new { id = Movie.Id }, null)
+                    </td>
+                    <td>@Movie.Genre.Name</td>
+                </tr>
+            }
+        </tbody>
 
-@foreach (var movie in Model)
-{
-    <ul>
-        <li>
-            @movie.Name
-        </li>
-    </ul>
+    </table>
 }
