@@ -29,7 +29,7 @@ namespace Vidly.Controllers
             var genre = _context.Genre.ToList();
             var viewModel = new MovieFormViewModel
             {
-                Movie = new Movie(),
+                //Movie = new Movie(),
                 Genre = genre
             };
             return View("MovieForm", viewModel);
@@ -41,24 +41,19 @@ namespace Vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie Movie)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                if (Movie.Id == 0)
-                    _context.Movies.Add(Movie);
-                else
+                var viewModel = new MovieFormViewModel(Movie)
                 {
-                    var MoiveInDb = _context.Movies.Single(c => c.Id == Movie.Id);
-
-                    MoiveInDb.Name = Movie.Name;
-                    MoiveInDb.ReleaseDate = Movie.ReleaseDate;
-                    MoiveInDb.GenreId = Movie.GenreId;
-                    MoiveInDb.NumberInStock = Movie.NumberInStock;
-                }
+                    Genre = _context.Genre.ToList()
+                };
+                return View("Random", "Movies");
             }
-            catch (DbEntityValidationException e)
-            {
 
-                Console.WriteLine(e);
+            if (Movie.Id == 0)
+            {
+                Movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(Movie);
             }
             _context.SaveChanges();
             return RedirectToAction("Random", "Movies");
@@ -105,10 +100,10 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(Movie)
             {
-                Movie = Movie,
-                Genre = _context.Genre.ToList()
+                //Movie = Movie,
+            Genre = _context.Genre.ToList()
             };
             return View("MovieForm", viewModel);
             //return Content("id=" + id);
