@@ -40,11 +40,12 @@
             @Html.CheckBoxFor(m => m.Customer.IsSubscribedtoNewsletter) Subscribed To Newsletter?
         </label>
     </div>
-    @Html.HiddenFor(m => m.Customer.Id);
+    @Html.HiddenFor(m => m.Customer.Id)
+    @Html.AntiForgeryToken();
     <button type="submit" class="btn btn-primary">Save</button>
 }
 
-@section scripts
+@*@section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
