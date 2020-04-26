@@ -64,7 +64,7 @@
                         }
                     },
                     {
-                        data: "name"
+                        data: "membershipType.name"
                     },
                     {
                         data: "id",
@@ -75,7 +75,7 @@
                 ]
             });
 
-            $("#Customers").on("click", ".js-delete", function () {
+            $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
                 bootbox.confirm("Are you sure you want to delete this customer?", function (result) {
                     if (result) {
@@ -86,9 +86,9 @@
                                 button.parent("tr").remove();
                                 //console.log("Success");
                             }
-                        })
+                        });
                     }
-                })
+                });
             });
         });
     </script>
