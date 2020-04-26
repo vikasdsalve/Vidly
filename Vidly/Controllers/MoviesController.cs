@@ -88,8 +88,9 @@ namespace Vidly.Controllers
             //return RedirectToAction("Index", "Home", new { page = 1 , sortBy ="name" });
 
             //var movies = GetMovies();
-            var movies = _context.Movies.Include(c => c.Genre).ToList();
-            return View(movies);
+            //var movies = _context.Movies.Include(c => c.Genre).ToList();
+            //return View(movies);
+            return View();
         }
 
         public ActionResult Edit(int id)
