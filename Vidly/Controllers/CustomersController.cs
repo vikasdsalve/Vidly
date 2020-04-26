@@ -80,8 +80,9 @@ namespace Vidly.Controllers
             };
             return View("CustomerForm", viewModel);
         }
-            // GET: Customers
-            public ActionResult Index()
+        // GET: Customers
+  
+        public ActionResult Index()
         {
             //var customers = GetCustomers();
             // var customers = _context.Customer.Include(c => c.MembershipType).ToList();
