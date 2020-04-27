@@ -15,7 +15,7 @@ namespace Vidly.Models
 
         [Required]
         [StringLength(50)]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -78,7 +78,7 @@ namespace Vidly.Models
 
         [Required]
         [StringLength(50)]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
         [Required]
         [EmailAddress]
