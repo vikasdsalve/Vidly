@@ -12,27 +12,28 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input type="text" id="customer" value="" class="form-control" />
+            <input type="text" id="customer"  name="customer" data-rule-validCustomer="true" required value="" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label>Movie</label>
         <div class="tt-container">
-            <input type="text" id="movie" value="" class="form-control" />
+            <input type="text" id="movie"  name="movie" data-rule-atLeastOneMovie="true" value="" class="form-control" />
         </div>
-        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <ul id="movies" class="list-group"></ul>
-            </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="movies" class="list-group"></ul>
         </div>
+    </div>
 
-        <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary">Submit</button>
 
 </form>
 
+@Scripts.Render("~/bundles/jqueryval")
 
 @section scripts
 {
@@ -84,6 +85,36 @@
                     vm.movieIds.push(movie.id);
                 });
 
+
+            $.validator.addMethod("validCustomer", function () {
+                return vm.customerId && vm.customerId !== 0;
+            }, "Please select a valid customer.");
+
+
+            $.validator.addMethod("atLeastOneMovie", function () {
+                return vm.movieIds.length > 0;
+            }, "Please select at least one movie.");
+
+
+
+            var validator =  $("#newRental").validate({
+                submitHandler: function () {
+                    e.preventDefault();
+                    $.ajax({
+                        url: "/api/NewRentals",
+                        method: "post",
+                        data: vm
+                    })
+                        .done(function () {
+                            console.log("done");
+                            toastr.success("Rentals Successfully Records");
+                        })
+                        .fail(function () {
+                            toastr.success("Rentals Not Successfully Records")
+                        });
+                }
+            });
+            /*
             $("#newRental").submit(function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -99,7 +130,7 @@
                         toastr.success("Rentals Not Successfully Records")
                     });
             });
-
+            */
         });
 
     </script>
