@@ -99,7 +99,6 @@
 
             var validator =  $("#newRental").validate({
                 submitHandler: function () {
-                    e.preventDefault();
                     $.ajax({
                         url: "/api/NewRentals",
                         method: "post",
@@ -108,10 +107,18 @@
                         .done(function () {
                             console.log("done");
                             toastr.success("Rentals Successfully Records");
+                            $('#customer').typeahead(val, "");
+                            $('#movie').typeahead(val, "");
+                            $('#movies').empty();
+
+                            vm = { movieIds: [] };
+
+                            validator.resetForm();
                         })
                         .fail(function () {
                             toastr.success("Rentals Not Successfully Records")
                         });
+                    return false;
                 }
             });
             /*
